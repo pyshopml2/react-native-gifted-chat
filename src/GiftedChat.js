@@ -8,7 +8,7 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Animated, Platform, StyleSheet, View } from 'react-native';
+import { Animated, Platform, StyleSheet, View, ActivityIndicator } from 'react-native';
 
 import ActionSheet from '@expo/react-native-action-sheet';
 import moment from 'moment';
@@ -317,6 +317,7 @@ class GiftedChat extends React.Component {
           ref={(component) => (this._messageContainerRef = component)}
 
         />
+        {this.props.isLoading && <ActivityIndicator size="small" color="#3f51b5" />}
         {this.renderChatFooter()}
       </AnimatedView>
     );
@@ -557,6 +558,7 @@ GiftedChat.defaultProps = {
   maxInputLength: null,
   forceGetKeyboardHeight: false,
   inverted: true,
+  isLoading: false
 };
 
 GiftedChat.propTypes = {
